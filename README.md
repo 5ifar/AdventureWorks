@@ -10,5 +10,5 @@ A special thanks to [Maven Analytics](https://mavenanalytics.io/) for creating t
 
 ## 📚 Table of Contents
 Please find the resource links for the project below:
-- [AdventureWorks Project Documentation](--link--)
+- [AdventureWorks Project Documentation](https://github.com/5ifar/AdventureWorks/tree/main/Project%20Documentation)
 - Report.pbix to be added as a file.
