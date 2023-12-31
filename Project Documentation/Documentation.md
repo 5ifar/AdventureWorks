@@ -4,12 +4,12 @@
 ---
 
 ## Table of Contents
-- [Phase 1: Connecting & Shaping Data using Power Query Editor](#phase-1:-connecting-&-shaping-data-using-power-query-editor)
+- [Phase 1: Connecting & Shaping Data using PBI Power Query Editor](#phase-1:-connecting-&-shaping-data-using-pbi-power-query-editor)
 
 
 ---
 
-## Phase 1: Connecting & Shaping Data using Power Query Editor
+## Phase 1: Connecting & Shaping Data using PBI Power Query Editor
 
 **Step 1:** Query Territory Lookup table to the Power Query Editor (PQE). Rename table. Check all data types.
 
@@ -40,4 +40,12 @@
 
 **Step 9:** Add Conditional Columns based on OrderQuantity column:
 - If the column value is 1 then add “Single Item”, if column value is greater than 1 then add “Multiple Items” else add “Other” in the Sales Data tables.
+
+**Step 10:** Append all the Sales data together using Append from Folder functionality:
+- Move all 3 Sales Data tables for years 2020 to 2022 to a folder.
+- Implement an Append Query to combine all the tables using the folder as a data source into a combined Sales Data 2020-2022 table.
+- Transform data by Combine Files option from the Content Column Settings.
+- Remove the Source.Name column that mentions the file source as it’s not required.
+
+**Step 11:** For all Lookup tables disable the ‘Include in Report Refresh’ option from the PQE Query list since they contain static data. This will leave only the Sales Data to be refreshed. This will optimize query refresh times.
 
