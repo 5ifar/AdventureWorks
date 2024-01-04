@@ -80,6 +80,18 @@
 - Product Lookup -> ProductSubcategoryKey
 - Product Subcategories Lookup -> ProductCategoryKey
 
+**Step 5:** Setup any Data Format changes required Column tools tab in Data view:
+- Set the Data format for dates to be the Short date in date related columns in Calender, Sales & Return tables for easier interpretation during visualization.
+- Set Data format for price related columns as Currency and decimal places as 2 in the Product Lookup table.
+
+**Step 6:** Setup any Data Category changes required Column tools tab in Data view:
+- Set the Data category as Country and Continent for the Country and Continent columns respectively in Territory Lookup table.
+
+**Step 7:** Implement Hierarchies:
+- Territory hierarchy: Continent -> Country -> Region
+- Date hierarchy: StartofYear -> StartofMonth -> StartofWeek -> Date
+
+---
 
 
 
