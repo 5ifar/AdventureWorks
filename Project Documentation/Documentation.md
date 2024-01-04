@@ -70,6 +70,16 @@
 |Calendar Lookup (Date)|Returns Data (ReturnDate)|
 |Territory Lookup (SalesTerritoryKey)|Returns Data (TerritoryKey)|
 
+**Step 3:** Setup Model Schemas for the tables:
+- Calender Lookup, Territory Lookup, Customer Lookup & Product Lookup -> Sales Data will form Star Schema.
+- Product Category Lookup -> Product Subcategory Lookup -> Product Lookup will form Snowflake Schema.
+
+**Step 4:** Hide all the FK from Fact tables to force filter context to be based on PK in lookup tables:
+- Sales Data -> CustomerKey, OrderDate, Stockdate, ProductKey, TerritoryKey
+- Returns Data -> ProductKey, TerritoryKey, ReturnDate
+- Product Lookup -> ProductSubcategoryKey
+- Product Subcategories Lookup -> ProductCategoryKey
+
 
 
 
