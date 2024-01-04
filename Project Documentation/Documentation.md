@@ -49,3 +49,27 @@
 
 **Step 11:** For all Lookup tables disable the ‘Include in Report Refresh’ option from the PQE Query list since they contain static data. This will leave only the Sales Data to be refreshed. This will optimize query refresh times.
 
+---
+
+## Phase 2: Creating the Data Model using the PBI Model View
+
+**Step 1:** Identify Primary Keys & Foreign Keys for all the tables to form relationships. In the Model view, in Table properties set the Key Column value as the column that is to act as the Primary Key for the respective Lookup Table.
+
+**Step 2:** Setup Table Relationships by dragging Primary Keys from Lookup tables to Foreign Keys in other tables to setup the Filter Flow. This can also be done using the Manage Relationships setting.
+
+|Primary Key|Foreign Key|
+|-|-|
+|Territory Lookup (SalesTerritoryKey)|Sales Data (TerritoryKey)|
+|Customer Lookup (CustomerKey)|Sales Data (CustomerKey)|
+|Calendar Lookup (Date)|Sales Data (OrderDate)|
+|Calendar Lookup (Date)|Sales Data (StockDate) (Inactive Relationship)|
+|Product Lookup (ProductKey)|Sales Data (ProductKey)|
+|Product Category Lookup (ProductCategoryKey)|Product Subcategory Lookup (ProductCategoryKey)|
+|Product Subcategory Lookup (ProductSubcategoryKey|Product Lookup (ProductSubcategoryKey)|
+|Product Lookup (ProductKey)|Returns Data (ProductKey)|
+|Calendar Lookup (Date)|Returns Data (ReturnDate)|
+|Territory Lookup (SalesTerritoryKey)|Returns Data (TerritoryKey)|
+
+
+
+
