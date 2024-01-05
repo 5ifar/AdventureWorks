@@ -111,3 +111,28 @@
 4. ‘CustomerPriority’ based on Parent & AnnualIncome columns in Customer Lookup. If Parent and Annual Income is more than 100000 then insert “Priority” else insert             “Standard”.
 
    DAX: `CustomerPriority = IF('AW Customer Lookup'[Parent] = "Yes" && 'AW Customer Lookup'[AnnualIncome] > 100000, "Priority", "Standard")`
+
+5. ‘IncomeLevel’ based on AnnualIncome column in Customer Lookup. This will be a SWITCH function based implementation using >= operator based on TRUE logic.
+
+   DAX: `IncomeLevel = SWITCH(TRUE(), 'AW Customer Lookup'[AnnualIncome] >= 150000, "Very High", 'AW Customer Lookup'[AnnualIncome] >= 100000, "High", 'AW Customer             Lookup'[AnnualIncome] >= 50000, "Average", "Low")`
+
+6. ‘EducationCategory’ based on EducationLevel column in Customer Lookup. This will be a SWITCH function based implementation.
+
+   DAX: `EducationCategory = SWITCH('AW Customer Lookup'[EducationLevel], "High School", "High School", "Partial High School", "High School", "Bachelors", "Undergrad",         "Partial College", "Undergrad", "Graduate Degree", "Graduate")`
+
+7. ‘MonthShort’ based on MonthName column in Calendar Lookup. This will be 3 character capitalized month names.
+
+   DAX: `MonthShort = UPPER(LEFT('AW Calendar Lookup'[MonthName], 3))`
+
+8. ‘SKUCategory’ based on ProductSKU column in Product Lookup. This will be any characters before the first hyphen in ProductSKU column.
+
+   DAX: `SKUCategory = LEFT('AW Product Lookup'[ProductSKU], SEARCH("-", 'AW Product Lookup'[ProductSKU]) - 1)`
+
+9. ‘DayofWeek’ based on Date column in Calendar Lookup. This configured to ReturnType set as 2 so Monday: 1 to Sunday: 7.
+
+   DAX: `DayofWeek = WEEKDAY('AW Calendar Lookup'[Date], 2)`
+
+10. ‘Weekend’ based on DayofWeek column in Calendar Lookup. If DayofWeek is 6 or 7 then insert “Weekend” else “Weekday”.
+
+    DAX: `Weekend = IF('AW Calendar Lookup'[DayofWeek] IN {6, 7}, "Weekend", "Weekday")`
+
