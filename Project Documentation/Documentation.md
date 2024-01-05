@@ -22,7 +22,7 @@
 
 **Step 4:** Query Product Subcategory Lookup table to the PQE. Rename table. Check all data types.
 
-**Step 5:** Utilize Data QA & Column Profiling tools to improve quality of dat:
+**Step 5:** Utilize Data QA & Column Profiling tools to improve quality of data:
 - Update Column Profiling to be based on entire dataset.
 - Remove Error & Empty rows from Primary Key columns like CustomerKey from the Customer Lookup table.
 
@@ -93,5 +93,21 @@
 
 ---
 
+## Phase 3: Creating Calculated Fields with DAX
 
+**Step 1:** Create a Calculated Columns:
+1. ‘QuantityType’ based on Order Quantity column in Sales Data. If the Qty > 1 then insert “Multiple Items” else insert “Single Item”.
 
+   DAX: `Quantity Type = IF('AW Sales Data'[OrderQuantity] > 1, "Multiple Items", "Single Item")`
+
+2. ‘Parent’ based on TotalChildren column in Customer Lookup. If the value > 0 then insert “Yes” else insert “No”.
+
+   DAX: `Parent = IF('AW Customer Lookup'[TotalChildren] > 0, "Yes", "No")`
+
+3. ‘PricePoint’ based on ProductPrice column in Product Lookup. This will be a SWITCH function based implementation using > operator based on TRUE logic.
+
+   DAX: `PricePoint = SWITCH( TRUE( ), 'AW Product Lookup'[ProductPrice] > 500, "High", 'AW Product Lookup'[ProductPrice] > 100, "Mid", "Low" )`
+
+4. ‘CustomerPriority’ based on Parent & AnnualIncome columns in Customer Lookup. If Parent and Annual Income is more than 100000 then insert “Priority” else insert             “Standard”.
+
+   DAX: `CustomerPriority = IF('AW Customer Lookup'[Parent] = "Yes" && 'AW Customer Lookup'[AnnualIncome] > 100000, "Priority", "Standard")`
