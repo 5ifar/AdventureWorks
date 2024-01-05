@@ -136,3 +136,27 @@
 
     DAX: `Weekend = IF('AW Calendar Lookup'[DayofWeek] IN {6, 7}, "Weekend", "Weekday")`
 
+11. ‘BirthYear’ based on BirthDate column in Customer Lookup. Extract only the year data.
+
+    DAX: `BirthYear = YEAR('AW Customer Lookup'[BirthDate])`
+
+12. ‘RetailPrice’ based on ProductPrice column in Product Lookup. Use RELATED function to get the column.
+
+    DAX: `RetailPrice = RELATED('AW Product Lookup'[ProductPrice])`
+
+13. ‘Revenue’ based on RetailPrice & OrderQuantity column in Sales Data.
+
+    DAX: `Revenue = 'AW Sales Data'[RetailPrice] * 'AW Sales Data'[OrderQuantity]`
+
+14.
+
+**Step 2:** Configure a Measure Table to organize and store all the measures using the Enter Data functionality in the Data View. Move all the created Measures to this table.
+
+
+
+
+
+
+
+
+
