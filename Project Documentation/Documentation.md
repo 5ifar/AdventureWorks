@@ -148,9 +148,27 @@
 
     DAX: `Revenue = 'AW Sales Data'[RetailPrice] * 'AW Sales Data'[OrderQuantity]`
 
-14.
 
 **Step 2:** Configure a Measure Table to organize and store all the measures using the Enter Data functionality in the Data View. Move all the created Measures to this table.
+
+**Step 3:** Create Explicit Measures in the Measures Table:
+1. ‘Quantity Sold’: It is the sum of the Order Quantity column in Sales Data. Format as Whole number with commas.
+
+   DAX: `Quantity Sold = SUM('AW Sales Data'[OrderQuantity])`
+
+2. ‘Quantity Returned’: It is the sum of the Return Quantity column in Returns Data. Format as Whole number with commas.
+
+   DAX: `Quantity Returned = SUM('AW Returns Data'[ReturnQuantity])`
+
+3. ‘Average Retail Price’: It is the average of the Product Price column in Product Lookup. Format as Currency with commas.
+
+   DAX: `Average Retail Price = AVERAGE('AW Product Lookup'[ProductPrice])`
+
+4. ‘Total Returns’: It is the count of the Return Quantity column in Returns Data. This is different from Quantity Returned Measure since it shows the count of number of       times returns were made unlike Quantity Returned that shows the total number of products returned. Format as Whole number with commas.
+
+   DAX: `Total Returns = COUNT('AW Returns Data'[ReturnQuantity])`
+
+
 
 
 
