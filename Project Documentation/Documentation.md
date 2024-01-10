@@ -232,6 +232,45 @@
 
     DAX: `Total Profit = [Total Revenue] - [Total Cost]`
 
+21. ‘YTD Revenue’: It is the Year to Date value of the Total Revenue measure. Format as Currency with commas and no decimal.
+
+    DAX: `YTD Revenue = CALCULATE([Total Revenue], DATESYTD('AW Calendar Lookup'[Date]))`
+
+22. ‘Previous Month Revenue’: It is the previous month value of the Total Revenue measure with an interval of 1 month. Format as Currency with commas and no decimal.
+
+    DAX: `Previous Month Revenue = CALCULATE([Total Revenue], DATEADD('AW Calendar Lookup'[Date], -1, MONTH))`
+
+23. ‘Previous Month Returns’: It is the previous month value of the Total Returns measure with an interval of 1 month. Format as Whole number with commas.
+
+    DAX: `Previous Month Returns = CALCULATE([Total Returns], DATEADD('AW Calendar Lookup'[Date], -1, MONTH))`
+
+24. ‘Previous Month Orders’: It is the previous month value of the Total Orders measure with an interval of 1 month. Format as Whole number with commas.
+
+    DAX: `Previous Month Orders = CALCULATE([Total Orders], DATEADD('AW Calendar Lookup'[Date], -1, MONTH))`
+
+25. ‘Previous Month Profit’: It is the previous month value of the Total Profit measure with an interval of 1 month. Format as Currency with commas and no decimal.
+
+    DAX: `Previous Month Profit = CALCULATE([Total Profit], DATEADD('AW Calendar Lookup'[Date], -1, MONTH))`
+
+26. ‘Revenue Target’: It is a 10% more than the Previous Month Revenue measure. Format as Currency with commas and no decimal.
+
+    DAX: `Revenue Target = [Previous Month Revenue] * 1.1`
+
+27. ‘Profit Target’: It is a 10% more than the Previous Month Profit measure. Format as Currency with commas and no decimal.
+
+    DAX: `Profit Target = [Previous Month Profit] * 1.1`
+
+28. ‘Order Target’: It is a 10% more than the Previous Month Orders measure. Format as Whole number with commas.
+
+    DAX: `Order Target = [Previous Month Orders] * 1.1`
+
+29. ‘10 Day Rolling Revenue’: It is the value of the running total of 10 days of the Total Revenue measure. Format as Currency with commas and no decimal.
+
+    DAX: `10 Day Rolling Revenue = CALCULATE([Total Revenue], DATESINPERIOD('AW Calendar Lookup'[Date], MAX('AW Calendar Lookup'[Date]), -10, DAY))`
+
+30. ‘90 Day Rolling Profit’: It is the value of the running total of 90 days of the Total Profit measure. Format as Currency with commas and no decimal.
+
+    DAX: `90 Day Rolling Profit = CALCULATE([Total Profit], DATESINPERIOD('AW Calendar Lookup'[Date], MAX('AW Calendar Lookup'[Date]), -90, DAY))`
 
 
 
