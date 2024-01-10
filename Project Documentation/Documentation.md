@@ -192,7 +192,45 @@
 
     DAX: `Bike Sales = CALCULATE([Quantity Sold], 'AW Product Categories Lookup'[CategoryName] = "Bikes")`
 
+11. ‘Bike Returns’: It is the value of Quantity Returned Measure when the CategoryName is “Bike”. Format as Whole number with commas.
 
+    DAX: `Bike Returns = CALCULATE([Quantity Returned], 'AW Product Categories Lookup'[CategoryName] = "Bikes")`
+
+12. ‘Bike Return Rate’: It is the value of Return Rate Measure when the CategoryName is “Bike”. Format as Percentage with 2 decimal places.
+
+    DAX: `Bike Return Rate = CALCULATE([Return Rate], 'AW Product Categories Lookup'[CategoryName] = "Bikes")`
+
+13. ‘All Orders’: It is the value of Total Orders Measure when there is no filter context. Implemented using the ALL function inside CALCULATE function to remove any set        filter on the Sales Data table. Format as Whole number with commas.
+
+    DAX: `All Orders = CALCULATE([Total Orders], ALL('AW Sales Data'))`
+
+14. ‘% of All Orders’: It is the value of division of Total Orders Measure by All Orders Measure. Format as Percentage with 2 decimal places.
+
+    DAX: `% of All Orders = DIVIDE([Total Orders], [All Orders])`
+
+15. ‘Overall Average Price’: It is the value of Average Retail Price Measure when there is no filter context. Implemented using the ALL function inside CALCULATE function       to remove any set filter on the Product Lookup table. Format as Whole number with commas.
+
+    DAX: `Overall Average Price = CALCULATE([Average Retail Price], ALL('AW Product Lookup'))`
+
+16. ‘High Ticket Orders’: It is the value of Total Orders measure when ProductPrice is greater than Overall Average Price. Format as Whole number with commas.
+
+    DAX: `High Ticket Orders = CALCULATE([Total Orders], FILTER('AW Product Lookup', 'AW Product Lookup'[ProductPrice] > [Overall Average Price]))`
+
+17. ‘Total Revenue’: It is the sum of product iteration of OrderQuantity and ProductPrice. Format as Currency with commas and no decimal.
+
+    DAX: `Total Revenue = SUMX('AW Sales Data', 'AW Sales Data'[OrderQuantity] * RELATED('AW Product Lookup'[ProductPrice]))`
+
+18. ‘Average Revenue per Customer’: It is the product of Total Revenue Measure and Total Customers Measure. Format as Currency with commas and no decimal.
+
+    DAX: `Average Revenue per Customer = DIVIDE([Total Revenue], [Total Customers])`
+
+19. ‘Total Cost’: It is the sum of product iteration of OrderQuantity and ProductCost. Format as Currency with commas and no decimal.
+
+    DAX: `Total Cost = SUMX('AW Sales Data', 'AW Sales Data'[OrderQuantity] * RELATED('AW Product Lookup'[ProductCost]))`
+
+20. ‘Total Profit’: It is the difference between the Total Revenue measure and the Total Cost measure. Format as Currency with commas and no decimal.
+
+    DAX: `Total Profit = [Total Revenue] - [Total Cost]`
 
 
 
