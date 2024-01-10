@@ -95,7 +95,7 @@
 
 ## Phase 3: Creating Calculated Fields with DAX
 
-**Step 1:** Create a Calculated Columns:
+**Step 1:** Create Calculated Columns:
 1. ‘QuantityType’ based on Order Quantity column in Sales Data. If the Qty > 1 then insert “Multiple Items” else insert “Single Item”.
 
    DAX: `Quantity Type = IF('AW Sales Data'[OrderQuantity] > 1, "Multiple Items", "Single Item")`
