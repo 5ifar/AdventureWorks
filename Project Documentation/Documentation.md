@@ -168,6 +168,31 @@
 
    DAX: `Total Returns = COUNT('AW Returns Data'[ReturnQuantity])`
 
+5. ‘Total Orders’: It is the distinct count of the Order Number column in Sales Data. This is done since we simply cannot use COUNT like in the case of Total Returns since     the Sales Data table contains multiple rows with same Order Number with different ProductKeys hence we’ll use DISTINCTCOUNT. Format as Whole number with commas.
+
+   DAX: `Total Orders = DISTINCTCOUNT('AW Sales Data'[OrderNumber])`
+
+6. ‘Total Customers’: It is the distinct count of the CustomerKey column in Sales Data. Format as Whole number with commas.
+
+   DAX: `Total Customers = DISTINCTCOUNT('AW Sales Data'[CustomerKey])`
+
+7. ‘Return Rate’: It is the division of the Quantity Returned Measure by the Quantity Sold Measure. Mark as “No Sales” if Quantity Sold is 0. Format as Percentage with 2       decimal places.
+
+   DAX: `Return Rate = DIVIDE([Quantity Returned], [Quantity Sold], "No Sales")`
+
+8. ‘Bulk Orders’: It is the value of Total Orders Measure when OrderQunatity is greater than 1. Implemented using the CALCULATE function. Format as Whole number with commas.
+
+   DAX: `Bulk Orders = CALCULATE([Total Orders], 'AW Sales Data'[OrderQuantity] > 1)`
+
+9. ‘Weekend Orders’: It is the value of Total Orders Measure when it’s the Weekend. Implemented using the CALCULATE function. Format as Whole number with commas.
+
+   DAX: `Weekend Orders = CALCULATE([Total Orders], 'AW Calendar Lookup'[Weekend] = "Weekend")`
+
+10. ‘Bike Sales’: It is the value of Quantity Sold Measure when the CategoryName is “Bike”. Format as Whole number with commas.
+
+    DAX: `Bike Sales = CALCULATE([Quantity Sold], 'AW Product Categories Lookup'[CategoryName] = "Bikes")`
+
+
 
 
 
