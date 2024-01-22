@@ -5,7 +5,7 @@
 
 ## Table of Contents
 - [Phase 1: Connecting & Shaping Data using PBI Power Query Editor](#Phase-1-Connecting--Shaping-Data-using-PBI-Power-Query-Editor)
-- [Phase 2: Creating the Data Model using the PBI Model View](#Phase-2-Creating-the-Data-Model-using-the-PBI-Model-View)
+- [Phase 2: Creating the Data Model using PBI Model View](#Phase-2-Creating-the-Data-Model-using-PBI-Model-View)
 - [Phase 3: Creating Calculated Fields with DAX](#Phase-3-Creating-Calculated-Fields-with-DAX)
 
 ---
@@ -52,7 +52,7 @@
 
 ---
 
-## Phase 2: Creating the Data Model using the PBI Model View
+## Phase 2: Creating the Data Model using PBI Model View
 
 **Step 1:** Identify Primary Keys & Foreign Keys for all the tables to form relationships. In the Model view, in Table properties set the Key Column value as the column that is to act as the Primary Key for the respective Lookup Table.
 
@@ -272,6 +272,44 @@
 30. ‘90 Day Rolling Profit’: It is the value of the running total of 90 days of the Total Profit measure. Format as Currency with commas and no decimal.
 
     DAX: `90 Day Rolling Profit = CALCULATE([Total Profit], DATESINPERIOD('AW Calendar Lookup'[Date], MAX('AW Calendar Lookup'[Date]), -90, DAY))`
+
+---
+
+## Phase 4: Visualizing Data with Reports
+
+**Step 1:** Sketching the Dashboard Layout:
+
+**I:** According to design framework guideline we would first define the objective of the dashboard. Since we have multiple objectives we would need a multi-page dashboard with each page serving a distinct deliberate purpose.
+Our goals are:
+1. Track KPIs: This would be a Executive targeted dashboard
+2. Compare regional performance: This would require geospatial (map) analysis
+3. Analyze product-level trends: This would need a product detail view
+4. Identify high-value customers: This would need a customer detail view
+
+**II:** 3 Key Questions:
+1. Type of Data: Time-series (calendar data), Categorical (product category/subcategory data), Geospatial (territory data), Hierarchies
+2. Communication Objective: Comparison & Composition
+3. End User Type: Managers
+
+**III:** Executive Dashboard Home View:
+
+View layout design is often based on reading patterns: F & Z. The visuals are then arranged in the way these letters are drawn. The visual granularity increases as we move through the reading pattern. The top area is the most important in both layout designs since its the first place views are going to look. We start by adding the brand logo to the top left corner to set the context. The logo is followed by main high-level overall KPI cards in the remaining top area since this are important for executives and managers to see first.
+The middle left area will contain a line chart trending visual with date hierarchy to allow granularity drilling, followed by KPI context cards below it like current month/previous month/month over month revenue change etc. Increasing the revenue granularity in the middle we can do a product category breakout showing comparison across categories. Followed by a little product level visual like Top 10 revenue driving products with some conditional formatting.
+We can add an intuitive user friendly way for navigating between pages by creating a left navigation panel with some icons using the page navigation and bookmark functionalities.
+
+**IV:** Map detail Page: We can add a slicer to the top of the map visual to dig into a specific country or continent and display corresponding data.
+
+**V:** Product detail Page: We can filter focus into specific products on this page in the top right and show target revenue/profit/order stats using gauge charts to show product performance against those targets. We can also add some trending visuals like revenue/profit trending chart and column chart trending to show returns/return rate trends.
+
+**VI:** Customer detail Page: We start on top right with high level metrics like total customers/customer revenue/orders per customer followed by compositional analysis of the customer demographics using donut charts. We can add some trending visuals like total customers and finally for the objective of identifying high-value customers we can add a table/matrix visual showing the top n customers. We can also add some info buttons to display some insight using bookmark to draw to a filtered view. 
+
+**Step 2:** Add 4 Report Views – Exec Dashboard, Map, Product Detail, Customer Detail.
+
+**In Exec Dashboard View:**
+
+**Step 3:** Add AW Logo to the top left corner using Insert Image option. Add Rounded Rectangle Shapes as a background for the Main KPI cards. Change Rounded Corner Prop to 15%. Change Fill Colour to Black 20%. Remove Border. Height: 100 Width: 225. Make 3 more copies of the shape. Select all, Format Align – Distribute Horizontally & Align Top.
+
+**Step 4:** Add Rectangle shape for the Navigation Bar to the View left edge from end to end. Change Fill Colour to 20% Black. Remove Border. Copy the bar to all the views. In the Selection pane, rename all added objects and group the KPI Card Backgrounds as KPI Backgrounds.
 
 
 
