@@ -4,8 +4,9 @@
 ---
 
 ## Table of Contents
-- [Phase 1: Connecting & Shaping Data using PBI Power Query Editor](#phase-1:-connecting-&-shaping-data-using-pbi-power-query-editor)
-
+- [Phase 1: Connecting & Shaping Data using PBI Power Query Editor](#phase-1-connecting-&-shaping-data-using-pbi-power-query-editor)
+- [Phase 2: Creating the Data Model using the PBI Model View](#phase-2-creating-the-data-model-using-the-PBI-model-view)
+- [Phase 3: Creating Calculated Fields with DAX](#Phase-3-Creating-Calculated-Fields-with-DAX)
 
 ---
 
