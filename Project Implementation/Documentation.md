@@ -115,11 +115,11 @@
 
 5. ‘IncomeLevel’ based on AnnualIncome column in Customer Lookup. This will be a SWITCH function based implementation using >= operator based on TRUE logic.
 
-   DAX: `IncomeLevel = SWITCH(TRUE(), 'AW Customer Lookup'[AnnualIncome] >= 150000, "Very High", 'AW Customer Lookup'[AnnualIncome] >= 100000, "High", 'AW Customer             Lookup'[AnnualIncome] >= 50000, "Average", "Low")`
+   DAX: `IncomeLevel = SWITCH(TRUE(), 'AW Customer Lookup'[AnnualIncome] >= 150000, "Very High", 'AW Customer Lookup'[AnnualIncome] >= 100000, "High", 'AW Customer Lookup'[AnnualIncome] >= 50000, "Average", "Low")`
 
 6. ‘EducationCategory’ based on EducationLevel column in Customer Lookup. This will be a SWITCH function based implementation.
 
-   DAX: `EducationCategory = SWITCH('AW Customer Lookup'[EducationLevel], "High School", "High School", "Partial High School", "High School", "Bachelors", "Undergrad",         "Partial College", "Undergrad", "Graduate Degree", "Graduate")`
+   DAX: `EducationCategory = SWITCH('AW Customer Lookup'[EducationLevel], "High School", "High School", "Partial High School", "High School", "Bachelors", "Undergrad", "Partial College", "Undergrad", "Graduate Degree", "Graduate")`
 
 7. ‘MonthShort’ based on MonthName column in Calendar Lookup. This will be 3 character capitalized month names.
 
