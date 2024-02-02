@@ -311,6 +311,26 @@ We can add an intuitive user friendly way for navigating between pages by creati
 
 **Step 4:** Add Rectangle shape for the Navigation Bar to the View left edge from end to end. Change Fill Colour to 20% Black. Remove Border. Copy the bar to all the views. In the Selection pane, rename all added objects and group the KPI Card Backgrounds as KPI Backgrounds.
 
+**Step 5:** Add Simple Cards: 1. Total Revenue as REVENUE 2. Total Profit as PROFIT 3. Total Orders as ORDERS 4. Return Rate as RETURN RATE
+Rename Title by editing the field name in the visual. Remove Card Background. Change Callout Value Font to Segoe UI Bold, size 38. Format colour to #20E2D7 (Maven Blue). Add 1 Value decimal place. Change Category Label Font to Segoe UI, size 9. Format colour to White. Select all, Format Align – Distribute Horizontally & Align Top. Group all cards as KPI Values and then group it along with KPI Backgrounds as KPIs.
+
+**In Customer Detail View:**
+
+**Step 6:** Add Simple Cards: 1. Total Customers as UNIQUE CUSTOMERS 2. Average Revenue per Customer as REVENUE PER CUSTOMER. Follow same formatting as Cards on Exec Dashboard.
+
+**In Exec Dashboard View:**
+
+**Step 7:** Add Line Chart with Start of Month on X axis and Total Revenue on Y axis. Change Title to Monthly Revenue. Remove Axis Titles. Change Font to Segoe UI Size 10 Center Aligned. Add Zoom Slider for X axis. Line Stroke Width to 2px. Line Colour Black 20%.
+
+Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency. Add Trend Line with 75% Transparency. Add Forecast with 2 points length with last 1 point ignored. Set 85% confidence.
+
+**In Customer Detail View:**
+
+**Step 8:** Add Line Chart with Start of Month on X axis and Total Customers on Y axis. Change Title to Monthly Customers. Add Trend line & Tooltips. Format similar to the line chart above.
+
+
+
+
 
 
 
