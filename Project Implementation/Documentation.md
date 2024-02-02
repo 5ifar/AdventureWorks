@@ -342,3 +342,13 @@ Replicate the KPI card for Total Orders and Total Returns measures with targets 
 
 Replicate above donut chart for Total Orders measure by Occupation. Change Title to Orders by Occupation. Change Title Font to Segoe UI Size 10 Center Aligned. Add visual-level filter to display the 3 occupations with the most orders using the Top N filtering type with filter data values as Total Orders.
 
+**In Exec Dashboard View:**
+
+**Step 12:**  Add Matrix visual with Product Name as row and Total Orders, Total Revenue & Return Rate measures as values. Rename columns accordingly. Set Style Preset as None. Disable Column and Row Subtotals.
+
+**Step 13:** Configure Conditional formatting for the Matrix visual. In Properties go to Cell elements:
+1. For Orders column, Set Data bars. For Negative Bar set colour as White and for Positive Bar set colour as 20% Dark White.
+2. For Return % column, Set Background colour. For Max value set colour as Red and for Min value set colour as White.  Format style is Gradient.
+
+**Step 14:** Configure Top 10 Visual level filter on the Matrix visual by the Total Orders measure value. Change column name to Top 10 Products.
+
