@@ -328,14 +328,17 @@ Format Tooltip from Properties. Type Default. Text Label Colour White. Text valu
 
 **Step 8:** Add Line Chart with Start of Month on X axis and Total Customers on Y axis. Change Title to Monthly Customers. Add Trend line & Tooltips. Format similar to the line chart above.
 
+**In Exec Dashboard View:**
 
+**Step 9:** Add KPI card with Total Revenue measure value with Trend axis as Start of Month and target values as Previous Month Revenue measure. If target is met the KPI card will show green colour else, it will be in red colour. Change Title to Monthly Revenue. Change Title Font to Segoe UI Size 10 Center Aligned. Change Callout Value Font to Segoe UI Bold Size 30 Center Aligned with Display units as Millions. Drop Trend axis transparency to 10% and set colours and Direction according to the measure plotted. Change Target Lable Font to Segoe UI Size 9 Center Aligned and Label as Prev Month.
 
+Replicate the KPI card for Total Orders and Total Returns measures with targets as Previous Month Orders and Previous Month Returns. Change Titles. For both KPIs set the display units as None since we want to see whole figures. For Monthly Returns KPI set the direction as Low is good.
 
+**Step 10:** Add Bar chart to see Product wise categorical breakdown with Y axis as CategoryName and X axis as Total Orders values. Remove Axis Titles. Remove X axis data value range and add data labels instead in Outside end position. Change Title to Orders by Category. Change Title Font to Segoe UI Size 10 Center Aligned. Change Bar colour to 20% Black. Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency.
 
+**In Customer Detail View:**
 
+**Step 11:** Add Donut chart of Total Orders Measure by Income level. Change Title to Orders by Income Level. Change Title Font to Segoe UI Size 10 Center Aligned. Turn off the legend and instead show data labels of category and value with font size 8 and 1 decimal place. Update the colour of slices. Add visual-level filter to exclude customers with “Very High” income level.
 
-
-
-
-
+Replicate above donut chart for Total Orders measure by Occupation. Change Title to Orders by Occupation. Change Title Font to Segoe UI Size 10 Center Aligned. Add visual-level filter to display the 3 occupations with the most orders using the Top N filtering type with filter data values as Total Orders.
 
