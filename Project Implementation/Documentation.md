@@ -367,3 +367,15 @@ Add Simple card to show Top Product Subcategory based on Return Rate measure. Co
 
 **Step 17:** Add Simple card to show Top Customer based on Total Revenue measure. Configure Top 1 Visual level filter by the Total Revenue measure value on Customer key parameter. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 26 size. Add a Text box to add Card title as Top Customer (by Revenue). Copy the above Simple card to create 2 more cards showing the Total Orders and the Total revenue measure for the top customer. The visual level filters should also be kept consistent.
 
+**In Map Page:**
+
+**Step 18:** Add Map visual for Location as Country field and bubble size based on Total Orders measure. Set Map Style as Dark. Change Bubble colour to Maven Blue. Enable Category Labels. Remove Title.
+
+Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency.
+
+Add Continent field slicer. Hide Slicer headers. Change Slicer Style to Tile. Change Value font to Segoe UI Bold Size 10. Add White border with 3-line width. Add Grey Background. In Slicer settings add Select All option.
+
+**In Customer Detail Page:**
+
+**Step 19:** Add Year field slicer. Hide Slicer headers. Change Slicer Style to Between. Change Value font to Segoe UI Bold Size 10. Add visual level filter to exclude blanks.
+
