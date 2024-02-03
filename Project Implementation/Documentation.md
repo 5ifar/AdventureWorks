@@ -7,6 +7,7 @@
 - [Phase 1: Connecting & Shaping Data using PBI Power Query Editor](#Phase-1-Connecting--Shaping-Data-using-PBI-Power-Query-Editor)
 - [Phase 2: Creating the Data Model using PBI Model View](#Phase-2-Creating-the-Data-Model-using-PBI-Model-View)
 - [Phase 3: Creating Calculated Fields with DAX](#Phase-3-Creating-Calculated-Fields-with-DAX)
+- [Phase 4: Visualizing Data with Reports](#Phase-4-Visualizing-Data-with-Reports)
 
 ---
 
@@ -351,4 +352,18 @@ Replicate above donut chart for Total Orders measure by Occupation. Change Title
 2. For Return % column, Set Background colour. For Max value set colour as Red and for Min value set colour as White.  Format style is Gradient.
 
 **Step 14:** Configure Top 10 Visual level filter on the Matrix visual by the Total Orders measure value. Change column name to Top 10 Products.
+
+**In Customer Detail View:**
+
+**Step 15:** Add Table visual with Customer Key, Full Name, Total Orders and Total Revenue as columns. Add Conditional formatting: For Orders column add White to Grey colour Data bars & for Revenue add White to Maven Blue colour scale. Configure Top 100 Visual level filter by the Total Orders measure value. Change table name to Top 100 Customers. Sort descending by Orders column.
+
+**In Exec Dashboard View:**
+
+**Step 16:** Add Simple card to show Top Product Subcategory based on Total Orders measure. Configure Top 1 Visual level filter by the Total Orders measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Ordered product Type.
+
+Add Simple card to show Top Product Subcategory based on Return Rate measure. Configure Top 1 Visual level filter by the Return Rate measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Returned Product Type.
+
+**In Customer Detail View:**
+
+**Step 17:** Add Simple card to show Top Customer based on Total Revenue measure. Configure Top 1 Visual level filter by the Total Revenue measure value on Customer key parameter. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 26 size. Add a Text box to add Card title as Top Customer (by Revenue). Copy the above Simple card to create 2 more cards showing the Total Orders and the Total revenue measure for the top customer. The visual level filters should also be kept consistent.
 
