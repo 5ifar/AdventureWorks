@@ -284,17 +284,17 @@
 Our goals are:
 1. Track KPIs: This would be a Executive targeted dashboard
 2. Compare regional performance: This would require geospatial (map) analysis
-3. Analyze product-level trends: This would need a product detail view
-4. Identify high-value customers: This would need a customer detail view
+3. Analyze product-level trends: This would need a product detail page
+4. Identify high-value customers: This would need a customer detail page
 
 **II:** 3 Key Questions:
 1. Type of Data: Time-series (calendar data), Categorical (product category/subcategory data), Geospatial (territory data), Hierarchies
 2. Communication Objective: Comparison & Composition
 3. End User Type: Managers
 
-**III:** Executive Dashboard Home View:
+**III:** Executive Dashboard Home Page:
 
-View layout design is often based on reading patterns: F & Z. The visuals are then arranged in the way these letters are drawn. The visual granularity increases as we move through the reading pattern. The top area is the most important in both layout designs since its the first place views are going to look. We start by adding the brand logo to the top left corner to set the context. The logo is followed by main high-level overall KPI cards in the remaining top area since this are important for executives and managers to see first.
+Page layout design is often based on reading patterns: F & Z. The visuals are then arranged in the way these letters are drawn. The visual granularity increases as we move through the reading pattern. The top area is the most important in both layout designs since its the first place viewers are going to look. We start by adding the brand logo to the top left corner to set the context. The logo is followed by main high-level overall KPI cards in the remaining top area since this are important for executives and managers to see first.
 The middle left area will contain a line chart trending visual with date hierarchy to allow granularity drilling, followed by KPI context cards below it like current month/previous month/month over month revenue change etc. Increasing the revenue granularity in the middle we can do a product category breakout showing comparison across categories. Followed by a little product level visual like Top 10 revenue driving products with some conditional formatting.
 We can add an intuitive user friendly way for navigating between pages by creating a left navigation panel with some icons using the page navigation and bookmark functionalities.
 
@@ -304,32 +304,32 @@ We can add an intuitive user friendly way for navigating between pages by creati
 
 **VI:** Customer detail Page: We start on top right with high level metrics like total customers/customer revenue/orders per customer followed by compositional analysis of the customer demographics using donut charts. We can add some trending visuals like total customers and finally for the objective of identifying high-value customers we can add a table/matrix visual showing the top n customers. We can also add some info buttons to display some insight using bookmark to draw to a filtered view. 
 
-**Step 2:** Add 4 Report Views – Exec Dashboard, Map, Product Detail, Customer Detail.
+**Step 2:** Add 4 Report Pages – Exec Dashboard, Map, Product Detail, Customer Detail.
 
-**In Exec Dashboard View:**
+**In Exec Dashboard Page:**
 
 **Step 3:** Add AW Logo to the top left corner using Insert Image option. Add Rounded Rectangle Shapes as a background for the Main KPI cards. Change Rounded Corner Prop to 15%. Change Fill Colour to Black 20%. Remove Border. Height: 100 Width: 225. Make 3 more copies of the shape. Select all, Format Align – Distribute Horizontally & Align Top.
 
-**Step 4:** Add Rectangle shape for the Navigation Bar to the View left edge from end to end. Change Fill Colour to 20% Black. Remove Border. Copy the bar to all the views. In the Selection pane, rename all added objects and group the KPI Card Backgrounds as KPI Backgrounds.
+**Step 4:** Add Rectangle shape for the Navigation Bar to the Page left edge from end to end. Change Fill Colour to 20% Black. Remove Border. Copy the bar to all the Pages. In the Selection pane, rename all added objects and group the KPI Card Backgrounds as KPI Backgrounds.
 
 **Step 5:** Add Simple Cards: 1. Total Revenue as REVENUE 2. Total Profit as PROFIT 3. Total Orders as ORDERS 4. Return Rate as RETURN RATE
 Rename Title by editing the field name in the visual. Remove Card Background. Change Callout Value Font to Segoe UI Bold, size 38. Format colour to #20E2D7 (Maven Blue). Add 1 Value decimal place. Change Category Label Font to Segoe UI, size 9. Format colour to White. Select all, Format Align – Distribute Horizontally & Align Top. Group all cards as KPI Values and then group it along with KPI Backgrounds as KPIs.
 
-**In Customer Detail View:**
+**In Customer Detail Page:**
 
 **Step 6:** Add Simple Cards: 1. Total Customers as UNIQUE CUSTOMERS 2. Average Revenue per Customer as REVENUE PER CUSTOMER. Follow same formatting as Cards on Exec Dashboard.
 
-**In Exec Dashboard View:**
+**In Exec Dashboard Page:**
 
 **Step 7:** Add Line Chart with Start of Month on X axis and Total Revenue on Y axis. Change Title to Monthly Revenue. Remove Axis Titles. Change Font to Segoe UI Size 10 Center Aligned. Add Zoom Slider for X axis. Line Stroke Width to 2px. Line Colour Black 20%.
 
 Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency. Add Trend Line with 75% Transparency. Add Forecast with 2 points length with last 1 point ignored. Set 85% confidence.
 
-**In Customer Detail View:**
+**In Customer Detail Page:**
 
 **Step 8:** Add Line Chart with Start of Month on X axis and Total Customers on Y axis. Change Title to Monthly Customers. Add Trend line & Tooltips. Format similar to the line chart above.
 
-**In Exec Dashboard View:**
+**In Exec Dashboard Page:**
 
 **Step 9:** Add KPI card with Total Revenue measure value with Trend axis as Start of Month and target values as Previous Month Revenue measure. If target is met the KPI card will show green colour else, it will be in red colour. Change Title to Monthly Revenue. Change Title Font to Segoe UI Size 10 Center Aligned. Change Callout Value Font to Segoe UI Bold Size 30 Center Aligned with Display units as Millions. Drop Trend axis transparency to 10% and set colours and Direction according to the measure plotted. Change Target Lable Font to Segoe UI Size 9 Center Aligned and Label as Prev Month.
 
@@ -337,13 +337,13 @@ Replicate the KPI card for Total Orders and Total Returns measures with targets 
 
 **Step 10:** Add Bar chart to see Product wise categorical breakdown with Y axis as CategoryName and X axis as Total Orders values. Remove Axis Titles. Remove X axis data value range and add data labels instead in Outside end position. Change Title to Orders by Category. Change Title Font to Segoe UI Size 10 Center Aligned. Change Bar colour to 20% Black. Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency.
 
-**In Customer Detail View:**
+**In Customer Detail Page:**
 
 **Step 11:** Add Donut chart of Total Orders Measure by Income level. Change Title to Orders by Income Level. Change Title Font to Segoe UI Size 10 Center Aligned. Turn off the legend and instead show data labels of category and value with font size 8 and 1 decimal place. Update the colour of slices. Add visual-level filter to exclude customers with “Very High” income level.
 
 Replicate above donut chart for Total Orders measure by Occupation. Change Title to Orders by Occupation. Change Title Font to Segoe UI Size 10 Center Aligned. Add visual-level filter to display the 3 occupations with the most orders using the Top N filtering type with filter data values as Total Orders.
 
-**In Exec Dashboard View:**
+**In Exec Dashboard Page:**
 
 **Step 12:**  Add Matrix visual with Product Name as row and Total Orders, Total Revenue & Return Rate measures as values. Rename columns accordingly. Set Style Preset as None. Disable Column and Row Subtotals.
 
@@ -353,17 +353,17 @@ Replicate above donut chart for Total Orders measure by Occupation. Change Title
 
 **Step 14:** Configure Top 10 Visual level filter on the Matrix visual by the Total Orders measure value. Change column name to Top 10 Products.
 
-**In Customer Detail View:**
+**In Customer Detail Page:**
 
 **Step 15:** Add Table visual with Customer Key, Full Name, Total Orders and Total Revenue as columns. Add Conditional formatting: For Orders column add White to Grey colour Data bars & for Revenue add White to Maven Blue colour scale. Configure Top 100 Visual level filter by the Total Orders measure value. Change table name to Top 100 Customers. Sort descending by Orders column.
 
-**In Exec Dashboard View:**
+**In Exec Dashboard Page:**
 
 **Step 16:** Add Simple card to show Top Product Subcategory based on Total Orders measure. Configure Top 1 Visual level filter by the Total Orders measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Ordered product Type.
 
 Add Simple card to show Top Product Subcategory based on Return Rate measure. Configure Top 1 Visual level filter by the Return Rate measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Returned Product Type.
 
-**In Customer Detail View:**
+**In Customer Detail Page:**
 
 **Step 17:** Add Simple card to show Top Customer based on Total Revenue measure. Configure Top 1 Visual level filter by the Total Revenue measure value on Customer key parameter. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 26 size. Add a Text box to add Card title as Top Customer (by Revenue). Copy the above Simple card to create 2 more cards showing the Total Orders and the Total revenue measure for the top customer. The visual level filters should also be kept consistent.
 
