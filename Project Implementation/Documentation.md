@@ -402,6 +402,17 @@ Set Callout value and Gauge colour Conditional formatting Format Style as Rules.
 
 Apply same formatting for other Gauges based on Revenue Target Gap and Profit Target Gap measures.
 
+**Step 23:** Add Area Chart with Total Profit on Y Axis and Start of Month on X Axis. Set Title as Monthly Profit. Change Line colour to 20% Black and Shade Area with 80% transparency. Add another Area Chart with Total Returns on Y Axis and Start of Month on X Axis. Set Title as Monthly Returns. Change Line colour to Red and Shade Area with 80% transparency.
+
+**Step 24:** Add Date Hierarchy to the Monthly Profit and Monthly Returns Area charts. Rename Titles to Profit Trending and Return Trending respectively.
+
+**In Exec Dashboard Page:**
+
+**Step 25:** Create visual drill down hierarchy for X Axis of Monthly Revenue line chart as Year -> Start of Quarter -> Start of Month. This helps us create a sort of visual level hierarchy for top level executives. Change Title to Revenue Trending.
+
+**In Customer Detail Page:**
+
+**Step 26:** Add Date Hierarchy to the Monthly Customers line chart. Rename Title to Customer Trending.
 
 
 
