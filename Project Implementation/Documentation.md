@@ -379,3 +379,29 @@ Add Continent field slicer. Hide Slicer headers. Change Slicer Style to Tile. Ch
 
 **Step 19:** Add Year field slicer. Hide Slicer headers. Change Slicer Style to Between. Change Value font to Segoe UI Bold Size 10. Add visual level filter to exclude blanks.
 
+**Step 20:** For year 2020, we have multiple customers with the same highest revenue. To display this what Power BI does is it aggregates the sum of all values which is not the correct approach. To fix this we’ll use the HASONEVALUE operator to create new measures to be used instead. Swap in these new measures for the 3 Top Customer card visuals.
+
+New DAX Measures:
+1. Total Orders (Customer Detail) = IF(HASONEVALUE('AW Customer Lookup'[CustomerKey]), [Total Orders], "-")\
+2. Total Revenue (Customer Detail) = IF(HASONEVALUE('AW Customer Lookup'[CustomerKey]), [Total Revenue], "-")
+3. Full Name (Customer Detail) = IF(HASONEVALUE('AW Customer Lookup'[CustomerKey]), MAX('AW Customer Lookup'[FullName]), "Multiple Customers")
+
+**In Product Detail Page:**
+
+**Step 21:** Add Gauge chart visual on Total Order measure value. Add Top 1 visual level filter based on Latest Start of Month value. Set the Max value as the Order Target measure. Set Title as Monthly Orders Vs Target. Set Fill colour as 20% Black. Replicate the above Gauge chart for Total Revenue and Total Profit measures. Set the visual title accordingly.
+
+**Step 22:** Add Conditional formatting for the above 3 Gauge Charts by creating new measures to base the formatting on.
+
+DAX: Order Target Gap = [Total Orders] - [Order Target]
+DAX: Revenue Target Gap = [Total Revenue] - [Revenue Target]
+DAX: Profit Target Gap = [Total Profit] - [Profit Target]
+
+Set Callout value and Gauge colour Conditional formatting Format Style as Rules. Set Order Target Gap as the field to be based on. Set 2 rules:
+1. If value >= Min and < 0 then colour as Red
+2. If value >= 0 and <= Max then colour as 20% Black.
+
+Apply same formatting for other Gauges based on Revenue Target Gap and Profit Target Gap measures.
+
+
+
+
