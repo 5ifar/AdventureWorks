@@ -414,5 +414,11 @@ Apply same formatting for other Gauges based on Revenue Target Gap and Profit Ta
 
 **Step 26:** Add Date Hierarchy to the Monthly Customers line chart. Rename Title to Customer Trending.
 
+**In Product Detail Page:**
 
+**Step 27:** Configure Product Drill through functionality: In the Product Detail Page change the Page Type to Drill through and Drill through from Product Name field. Delete Back Button if automatically created, this would be configured later. Remove Product Name slicer added earlier. In Exec Dashboard Product table, right click on any product and in drill through option select Product Detail Page. Add a Simple card on the page to display Product Name being drilled through. Add Text Box above this card with Selected Product text.
+
+**Step 28:** Setup Report Interactions:
+*In Exec Dashboard Page:* 1. Set the Orders by Category bar graph to Filter interaction based on Revenue Trending line chart filter since its more intuitive. 2. Set the 3 Monthly KPIs to None interaction based on Revenue Trending line chart filter since they represent current month metrics and hence shouldn’t change. 3. Set the Most Ordered/Returned Product Type Card to None interaction based on product selected filter in the Top 10 Products Matrix since then they will not show overall type but the type of the selected product which is not correct behaviour. 4. Set the Orders by category Bar chart to None interaction based on product selected filter in the Top 10 Products Matrix.
+*In Customer Detail Page:* 1. Set the Orders by Income/Occupation Donuts to Filter interaction based on Customer Trending line chart filter. 2. Set the Customer Trending and Orders by Income/Occupation Donuts to None interaction based on Top 100 Customer Table filter. Set Year slicer to Filter interaction to all visuals.
 
