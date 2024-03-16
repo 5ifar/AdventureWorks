@@ -430,3 +430,9 @@ In Exec Dashboard Page: Clear all applied filters. Navigate to the Bookmark pane
 **Step 30:** Setting up Custom Navigation Buttons:
 Copy the left Nav Bar to a new page where we’ll build the navigation setup. This needs to be done since we’ll be configuring Nav button actions to navigate to each of the pages and if we build this bar on anyone of those pages we won’t have the option to configure the button to navigate to same page it was built on. So building it on a new page gives us the option to configure navigation to all the other pages and then we can copy the bar to all the pages.
 Insert a Blank Button, in button formatting change state to Default and set Icon Type as Custom and Browse to select custom icon. Setup similarly custom icons for hover and click state. Enable Button Action as Type: Page Navigation and set the Destination as Required Page. Group all icons in the selection pane as Navigation Buttons.
+
+**Step 31:** Adding Custom Slicer Panel:
+Add Filter button in the left Nav bar and configure style with all states and Filter custom icons as required. Add a rectangle shape preferable the height of the page to configure the slicer. Format the shape as required with 20% Black background. Add the Year and Continent slicers inside the shape. Format the slicers as required.
+We need another button to go back to the hidden state. Add Left Arrow/Back button and format as required. Group all of these slicers, back button and background shape as Slicer Panel.
+Now we need to create 2 bookmarks: 1. Hide Slicer Panel 2. Show Slicer Panel. For 2, make the bookmark as it is. For 1, from the selection pane hide the Slicer Panel group and then create the bookmark. Uncheck Data option from both bookmark settings to ensure show/hide bookmark does not affect the existing applied filters. Configure both Filter & Back button action type as Bookmarks and select corresponding Show/Hide Panel Bookmarks.
+
