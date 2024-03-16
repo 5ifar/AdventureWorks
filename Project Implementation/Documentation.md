@@ -436,3 +436,29 @@ Add Filter button in the left Nav bar and configure style with all states and Fi
 We need another button to go back to the hidden state. Add Left Arrow/Back button and format as required. Group all of these slicers, back button and background shape as Slicer Panel.
 Now we need to create 2 bookmarks: 1. Hide Slicer Panel 2. Show Slicer Panel. For 2, make the bookmark as it is. For 1, from the selection pane hide the Slicer Panel group and then create the bookmark. Uncheck Data option from both bookmark settings to ensure show/hide bookmark does not affect the existing applied filters. Configure both Filter & Back button action type as Bookmarks and select corresponding Show/Hide Panel Bookmarks.
 
+**Step 32:** Configuring Parameters:
+
+**In Product Detail Page:**
+
+1. Adding Numeric Parameter:
+Create a new Parameter named Price Adjustment % with numeric range variable adjustment. Set data type as decimal, with minimum value as -1 and maximum value of 1 with increment of 0.1 and default value of 0. Add this slicer to the page.
+Parameter Table: Price Adjustment (%) = GENERATESERIES(-1, 1, 0.1)
+Parameter Measure: Price Adjustment (%) Value = SELECTEDVALUE('Price Adjustment (%)'[Price Adjustment (%)], 0)
+Format the slicer as required with the slicer style as single value.
+Now we need to create new measures: Adjusted Revenue, Adjusted Profit & Adjusted Price which will take into account these parameter changes.
+AdjustedPrice = [AverageRetailPrice] * (1 + 'Price Adjustment (%)'[Price Adjustment (%) Value])
+AdjustedRevenue = SUMX('AW Sales Data', 'AW Sales Data'[OrderQuantity] * [AdjustedPrice])
+AdjustedProfit = [AdjustedRevenue] - [TotalCost]
+Change Profit trending chart into a line chart and in the Y axis add the Adjusted Profit measure. Remove the Profit Trending Title since the Legend is now available. Change Adjusted Profit line colour to Maven blue for better visual interpretation. Add small data markers if required.
+2. Adding Fields Parameter:
+Create a new Parameter named Product Metric Selection with fields selection as Total Order, Total Revenue, Total Profit, Total Returns and Return Rate measures. Format the slicer as required with the slicer style as single select.
+Parameter Table: Product Metric Selection = {
+    ("Orders", NAMEOF('AW Measure Table'[TotalOrders]), 0),
+    ("Revenue", NAMEOF('AW Measure Table'[TotalRevenue]), 1),
+    ("Profit", NAMEOF('AW Measure Table'[TotalProfit]), 2),
+    ("Returns", NAMEOF('AW Measure Table'[TotalReturns]), 3),
+    ("Return %", NAMEOF('AW Measure Table'[ReturnRate]), 4)
+}
+Change Return trending chart Y axis to the Product Metric Selection parameter. Remove the Return Trending Title. Format the Return and Return Rate metric line colour to Red while the rest as 20% Black to indicate high value is not favourable.
+
+
