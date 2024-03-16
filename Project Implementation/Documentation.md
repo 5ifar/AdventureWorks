@@ -13,51 +13,51 @@
 
 ## Phase 1: Connecting & Shaping Data using PBI Power Query Editor
 
-**Step 1:** Query Territory Lookup table to the Power Query Editor (PQE). Rename table. Check all data types.
+`Step 1:` Query Territory Lookup table to the Power Query Editor (PQE). Rename table. Check all data types.
 
-**Step 2:** Query Product Lookup table to the PQE. Rename table. Check all data types.
+`Step 2:` Query Product Lookup table to the PQE. Rename table. Check all data types.
 - Change ProductCost & ProductPrice data type to Currency (i.e. Fixed decimal number).
 - Add new column ‘SKU Type’ based on all characters before 2nd ‘-‘ character in Product SKU column.
 - Replace all '0' in Product Style column with ‘NA’.
 
-**Step 3:** Query Product Category Lookup table to the PQE. Rename table. Check all data types.
+`Step 3:` Query Product Category Lookup table to the PQE. Rename table. Check all data types.
 
-**Step 4:** Query Product Subcategory Lookup table to the PQE. Rename table. Check all data types.
+`Step 4:` Query Product Subcategory Lookup table to the PQE. Rename table. Check all data types.
 
-**Step 5:** Utilize Data QA & Column Profiling tools to improve quality of data:
+`Step 5: Utilize Data QA & Column Profiling tools to improve quality of data:`
 - Update Column Profiling to be based on entire dataset.
 - Remove Error & Empty rows from Primary Key columns like CustomerKey from the Customer Lookup table.
 
-**Step 6:** Implement Text-specific table transformations:
+`Step 6: Implement Text-specific table transformations:`
 - Proper Case Prefix & Name columns in Customer Lookup table.
 - Add new FullName column using Merge Columns tool.
 
-**Step 7:** Implement Number-specific table transformations:
+`Step 7: Implement Number-specific table transformations:`
 - Inspect Max, Min, Avg Product prices in Product Lookup table.
 - Add DiscountPrice column by multiplying ProductPrice column by 0.9 (10% Discount) using Standard tool in Number-specific transformation tab.
 
-**Step 8:** Implement Date-specific table transformations:
+`Step 8: Implement Date-specific table transformations:`
 - Add new columns – Dayname, MonthName, Year, StartofWeek, StartofMonth, StartofQuarter & StartofYear.
 - Modify StartofWeek step custom column formula to set Monday as first day of week instead of default Sunday using `Date.StartOfWeek([Date],Day.Monday)`.
 
-**Step 9:** Add Conditional Columns based on OrderQuantity column:
+`Step 9: Add Conditional Columns based on OrderQuantity column:`
 - If the column value is 1 then add “Single Item”, if column value is greater than 1 then add “Multiple Items” else add “Other” in the Sales Data tables.
 
-**Step 10:** Append all the Sales data together using Append from Folder functionality:
+`Step 10: Append all the Sales data together using Append from Folder functionality:`
 - Move all 3 Sales Data tables for years 2020 to 2022 to a folder.
 - Implement an Append Query to combine all the tables using the folder as a data source into a combined Sales Data 2020-2022 table.
 - Transform data by Combine Files option from the Content Column Settings.
 - Remove the Source.Name column that mentions the file source as it’s not required.
 
-**Step 11:** For all Lookup tables disable the ‘Include in Report Refresh’ option from the PQE Query list since they contain static data. This will leave only the Sales Data to be refreshed. This will optimize query refresh times.
+`Step 11:` For all Lookup tables disable the ‘Include in Report Refresh’ option from the PQE Query list since they contain static data. This will leave only the Sales Data to be refreshed. This will optimize query refresh times.
 
 ---
 
 ## Phase 2: Creating the Data Model using PBI Model View
 
-**Step 1:** Identify Primary Keys & Foreign Keys for all the tables to form relationships. In the Model view, in Table properties set the Key Column value as the column that is to act as the Primary Key for the respective Lookup Table.
+`Step 1:` Identify Primary Keys & Foreign Keys for all the tables to form relationships. In the Model view, in Table properties set the Key Column value as the column that is to act as the Primary Key for the respective Lookup Table.
 
-**Step 2:** Setup Table Relationships by dragging Primary Keys from Lookup tables to Foreign Keys in other tables to setup the Filter Flow. This can also be done using the Manage Relationships setting.
+`Step 2:` Setup Table Relationships by dragging Primary Keys from Lookup tables to Foreign Keys in other tables to setup the Filter Flow. This can also be done using the Manage Relationships setting.
 
 |Primary Key|Foreign Key|
 |-|-|
@@ -72,24 +72,24 @@
 |Calendar Lookup (Date)|Returns Data (ReturnDate)|
 |Territory Lookup (SalesTerritoryKey)|Returns Data (TerritoryKey)|
 
-**Step 3:** Setup Model Schemas for the tables:
+`Step 3: Setup Model Schemas for the tables:`
 - Calender Lookup, Territory Lookup, Customer Lookup & Product Lookup -> Sales Data will form Star Schema.
 - Product Category Lookup -> Product Subcategory Lookup -> Product Lookup will form Snowflake Schema.
 
-**Step 4:** Hide all the FK from Fact tables to force filter context to be based on PK in lookup tables:
+`Step 4:` Hide all the FK from Fact tables to force filter context to be based on PK in lookup tables:
 - Sales Data -> CustomerKey, OrderDate, Stockdate, ProductKey, TerritoryKey
 - Returns Data -> ProductKey, TerritoryKey, ReturnDate
 - Product Lookup -> ProductSubcategoryKey
 - Product Subcategories Lookup -> ProductCategoryKey
 
-**Step 5:** Setup any Data Format changes required Column tools tab in Data view:
+`Step 5: Setup any Data Format changes required Column tools tab in Data view:`
 - Set the Data format for dates to be the Short date in date related columns in Calender, Sales & Return tables for easier interpretation during visualization.
 - Set Data format for price related columns as Currency and decimal places as 2 in the Product Lookup table.
 
-**Step 6:** Setup any Data Category changes required Column tools tab in Data view:
+`Step 6: Setup any Data Category changes required Column tools tab in Data view:`
 - Set the Data category as Country and Continent for the Country and Continent columns respectively in Territory Lookup table.
 
-**Step 7:** Implement Hierarchies:
+`Step 7: Implement Hierarchies:`
 - Territory hierarchy: Continent -> Country -> Region
 - Date hierarchy: StartofYear -> StartofMonth -> StartofWeek -> Date
 
@@ -97,7 +97,7 @@
 
 ## Phase 3: Creating Calculated Fields with DAX
 
-**Step 1:** Create Calculated Columns:
+`Step 1: Create Calculated Columns:`
 1. ‘QuantityType’ based on Order Quantity column in Sales Data. If the Qty > 1 then insert “Multiple Items” else insert “Single Item”.
 
    DAX: `Quantity Type = IF('AW Sales Data'[OrderQuantity] > 1, "Multiple Items", "Single Item")`
@@ -151,9 +151,9 @@
     DAX: `Revenue = 'AW Sales Data'[RetailPrice] * 'AW Sales Data'[OrderQuantity]`
 
 
-**Step 2:** Configure a Measure Table to organize and store all the measures using the Enter Data functionality in the Data View. Move all the created Measures to this table.
+`Step 2:` Configure a Measure Table to organize and store all the measures using the Enter Data functionality in the Data View. Move all the created Measures to this table.
 
-**Step 3:** Create Explicit Measures in the Measures Table:
+`Step 3: Create Explicit Measures in the Measures Table:`
 1. ‘Quantity Sold’: It is the sum of the Order Quantity column in Sales Data. Format as Whole number with commas.
 
    DAX: `Quantity Sold = SUM('AW Sales Data'[OrderQuantity])`
@@ -278,7 +278,7 @@
 
 ## Phase 4: Visualizing Data with Reports
 
-**Step 1:** Sketching the Dashboard Layout:
+`Step 1: Sketching the Dashboard Layout:`
 
 **I:** According to design framework guideline we would first define the objective of the dashboard. Since we have multiple objectives we would need a multi-page dashboard with each page serving a distinct deliberate purpose.
 Our goals are:
@@ -304,72 +304,72 @@ We can add an intuitive user friendly way for navigating between pages by creati
 
 **VI:** Customer detail Page: We start on top right with high level metrics like total customers/customer revenue/orders per customer followed by compositional analysis of the customer demographics using donut charts. We can add some trending visuals like total customers and finally for the objective of identifying high-value customers we can add a table/matrix visual showing the top n customers. We can also add some info buttons to display some insight using bookmark to draw to a filtered view. 
 
-**Step 2:** Add 4 Report Pages – Exec Dashboard, Map, Product Detail, Customer Detail.
+`Step 2:` Add 4 Report Pages – Exec Dashboard, Map, Product Detail, Customer Detail.
 
 **In Exec Dashboard Page:**
 
-**Step 3:** Add AW Logo to the top left corner using Insert Image option. Add Rounded Rectangle Shapes as a background for the Main KPI cards. Change Rounded Corner Prop to 15%. Change Fill Colour to Black 20%. Remove Border. Height: 100 Width: 225. Make 3 more copies of the shape. Select all, Format Align – Distribute Horizontally & Align Top.
+`Step 3:` Add AW Logo to the top left corner using Insert Image option. Add Rounded Rectangle Shapes as a background for the Main KPI cards. Change Rounded Corner Prop to 15%. Change Fill Colour to Black 20%. Remove Border. Height: 100 Width: 225. Make 3 more copies of the shape. Select all, Format Align – Distribute Horizontally & Align Top.
 
-**Step 4:** Add Rectangle shape for the Navigation Bar to the Page left edge from end to end. Change Fill Colour to 20% Black. Remove Border. Copy the bar to all the Pages. In the Selection pane, rename all added objects and group the KPI Card Backgrounds as KPI Backgrounds.
+`Step 4:` Add Rectangle shape for the Navigation Bar to the Page left edge from end to end. Change Fill Colour to 20% Black. Remove Border. Copy the bar to all the Pages. In the Selection pane, rename all added objects and group the KPI Card Backgrounds as KPI Backgrounds.
 
-**Step 5:** Add Simple Cards: 1. Total Revenue as REVENUE 2. Total Profit as PROFIT 3. Total Orders as ORDERS 4. Return Rate as RETURN RATE
+`Step 5: Add Simple Cards:` 1. Total Revenue as REVENUE 2. Total Profit as PROFIT 3. Total Orders as ORDERS 4. Return Rate as RETURN RATE
 Rename Title by editing the field name in the visual. Remove Card Background. Change Callout Value Font to Segoe UI Bold, size 38. Format colour to #20E2D7 (Maven Blue). Add 1 Value decimal place. Change Category Label Font to Segoe UI, size 9. Format colour to White. Select all, Format Align – Distribute Horizontally & Align Top. Group all cards as KPI Values and then group it along with KPI Backgrounds as KPIs.
 
 **In Customer Detail Page:**
 
-**Step 6:** Add Simple Cards: 1. Total Customers as UNIQUE CUSTOMERS 2. Average Revenue per Customer as REVENUE PER CUSTOMER. Follow same formatting as Cards on Exec Dashboard.
+`Step 6: Add Simple Cards:` 1. Total Customers as UNIQUE CUSTOMERS 2. Average Revenue per Customer as REVENUE PER CUSTOMER. Follow same formatting as Cards on Exec Dashboard.
 
 **In Exec Dashboard Page:**
 
-**Step 7:** Add Line Chart with Start of Month on X axis and Total Revenue on Y axis. Change Title to Monthly Revenue. Remove Axis Titles. Change Font to Segoe UI Size 10 Center Aligned. Add Zoom Slider for X axis. Line Stroke Width to 2px. Line Colour Black 20%.
+`Step 7:` Add Line Chart with Start of Month on X axis and Total Revenue on Y axis. Change Title to Monthly Revenue. Remove Axis Titles. Change Font to Segoe UI Size 10 Center Aligned. Add Zoom Slider for X axis. Line Stroke Width to 2px. Line Colour Black 20%.
 
 Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency. Add Trend Line with 75% Transparency. Add Forecast with 2 points length with last 1 point ignored. Set 85% confidence.
 
 **In Customer Detail Page:**
 
-**Step 8:** Add Line Chart with Start of Month on X axis and Total Customers on Y axis. Change Title to Monthly Customers. Add Trend line & Tooltips. Format similar to the line chart above.
+`Step 8:` Add Line Chart with Start of Month on X axis and Total Customers on Y axis. Change Title to Monthly Customers. Add Trend line & Tooltips. Format similar to the line chart above.
 
 **In Exec Dashboard Page:**
 
-**Step 9:** Add KPI card with Total Revenue measure value with Trend axis as Start of Month and target values as Previous Month Revenue measure. If target is met the KPI card will show green colour else, it will be in red colour. Change Title to Monthly Revenue. Change Title Font to Segoe UI Size 10 Center Aligned. Change Callout Value Font to Segoe UI Bold Size 30 Center Aligned with Display units as Millions. Drop Trend axis transparency to 10% and set colours and Direction according to the measure plotted. Change Target Lable Font to Segoe UI Size 9 Center Aligned and Label as Prev Month.
+`Step 9:` Add KPI card with Total Revenue measure value with Trend axis as Start of Month and target values as Previous Month Revenue measure. If target is met the KPI card will show green colour else, it will be in red colour. Change Title to Monthly Revenue. Change Title Font to Segoe UI Size 10 Center Aligned. Change Callout Value Font to Segoe UI Bold Size 30 Center Aligned with Display units as Millions. Drop Trend axis transparency to 10% and set colours and Direction according to the measure plotted. Change Target Lable Font to Segoe UI Size 9 Center Aligned and Label as Prev Month.
 
 Replicate the KPI card for Total Orders and Total Returns measures with targets as Previous Month Orders and Previous Month Returns. Change Titles. For both KPIs set the display units as None since we want to see whole figures. For Monthly Returns KPI set the direction as Low is good.
 
-**Step 10:** Add Bar chart to see Product wise categorical breakdown with Y axis as CategoryName and X axis as Total Orders values. Remove Axis Titles. Remove X axis data value range and add data labels instead in Outside end position. Change Title to Orders by Category. Change Title Font to Segoe UI Size 10 Center Aligned. Change Bar colour to 20% Black. Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency.
+`Step 10:` Add Bar chart to see Product wise categorical breakdown with Y axis as CategoryName and X axis as Total Orders values. Remove Axis Titles. Remove X axis data value range and add data labels instead in Outside end position. Change Title to Orders by Category. Change Title Font to Segoe UI Size 10 Center Aligned. Change Bar colour to 20% Black. Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency.
 
 **In Customer Detail Page:**
 
-**Step 11:** Add Donut chart of Total Orders Measure by Income level. Change Title to Orders by Income Level. Change Title Font to Segoe UI Size 10 Center Aligned. Turn off the legend and instead show data labels of category and value with font size 8 and 1 decimal place. Update the colour of slices. Add visual-level filter to exclude customers with “Very High” income level.
+`Step 11:` Add Donut chart of Total Orders Measure by Income level. Change Title to Orders by Income Level. Change Title Font to Segoe UI Size 10 Center Aligned. Turn off the legend and instead show data labels of category and value with font size 8 and 1 decimal place. Update the colour of slices. Add visual-level filter to exclude customers with “Very High” income level.
 
 Replicate above donut chart for Total Orders measure by Occupation. Change Title to Orders by Occupation. Change Title Font to Segoe UI Size 10 Center Aligned. Add visual-level filter to display the 3 occupations with the most orders using the Top N filtering type with filter data values as Total Orders.
 
 **In Exec Dashboard Page:**
 
-**Step 12:**  Add Matrix visual with Product Name as row and Total Orders, Total Revenue & Return Rate measures as values. Rename columns accordingly. Set Style Preset as None. Disable Column and Row Subtotals.
+`Step 12:`  Add Matrix visual with Product Name as row and Total Orders, Total Revenue & Return Rate measures as values. Rename columns accordingly. Set Style Preset as None. Disable Column and Row Subtotals.
 
-**Step 13:** Configure Conditional formatting for the Matrix visual. In Properties go to Cell elements:
+`Step 13:` Configure Conditional formatting for the Matrix visual. In Properties go to Cell elements:
 1. For Orders column, Set Data bars. For Negative Bar set colour as White and for Positive Bar set colour as 20% Dark White.
 2. For Return % column, Set Background colour. For Max value set colour as Red and for Min value set colour as White.  Format style is Gradient.
 
-**Step 14:** Configure Top 10 Visual level filter on the Matrix visual by the Total Orders measure value. Change column name to Top 10 Products.
+`Step 14:` Configure Top 10 Visual level filter on the Matrix visual by the Total Orders measure value. Change column name to Top 10 Products.
 
 **In Customer Detail Page:**
 
-**Step 15:** Add Table visual with Customer Key, Full Name, Total Orders and Total Revenue as columns. Add Conditional formatting: For Orders column add White to Grey colour Data bars & for Revenue add White to Maven Blue colour scale. Configure Top 100 Visual level filter by the Total Orders measure value. Change table name to Top 100 Customers. Sort descending by Orders column.
+`Step 15:` Add Table visual with Customer Key, Full Name, Total Orders and Total Revenue as columns. Add Conditional formatting: For Orders column add White to Grey colour Data bars & for Revenue add White to Maven Blue colour scale. Configure Top 100 Visual level filter by the Total Orders measure value. Change table name to Top 100 Customers. Sort descending by Orders column.
 
 **In Exec Dashboard Page:**
 
-**Step 16:** Add Simple card to show Top Product Subcategory based on Total Orders measure. Configure Top 1 Visual level filter by the Total Orders measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Ordered product Type.
+`Step 16:` Add Simple card to show Top Product Subcategory based on Total Orders measure. Configure Top 1 Visual level filter by the Total Orders measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Ordered product Type.
 
 Add Simple card to show Top Product Subcategory based on Return Rate measure. Configure Top 1 Visual level filter by the Return Rate measure value. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 14 size. Add a Text box to add Card title as Most Returned Product Type.
 
 **In Customer Detail Page:**
 
-**Step 17:** Add Simple card to show Top Customer based on Total Revenue measure. Configure Top 1 Visual level filter by the Total Revenue measure value on Customer key parameter. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 26 size. Add a Text box to add Card title as Top Customer (by Revenue). Copy the above Simple card to create 2 more cards showing the Total Orders and the Total revenue measure for the top customer. The visual level filters should also be kept consistent.
+`Step 17:` Add Simple card to show Top Customer based on Total Revenue measure. Configure Top 1 Visual level filter by the Total Revenue measure value on Customer key parameter. Set background colour as 20% Black. Set callout value colour as Maven Blue with Segoe UI bold font and 26 size. Add a Text box to add Card title as Top Customer (by Revenue). Copy the above Simple card to create 2 more cards showing the Total Orders and the Total revenue measure for the top customer. The visual level filters should also be kept consistent.
 
 **In Map Page:**
 
-**Step 18:** Add Map visual for Location as Country field and bubble size based on Total Orders measure. Set Map Style as Dark. Change Bubble colour to Maven Blue. Enable Category Labels. Remove Title.
+`Step 18:` Add Map visual for Location as Country field and bubble size based on Total Orders measure. Set Map Style as Dark. Change Bubble colour to Maven Blue. Enable Category Labels. Remove Title.
 
 Format Tooltip from Properties. Type Default. Text Label Colour White. Text value Colour Maven Blue. Drill Text Colour White. Background Colour Black 20% with 10% Transparency.
 
@@ -377,9 +377,9 @@ Add Continent field slicer. Hide Slicer headers. Change Slicer Style to Tile. Ch
 
 **In Customer Detail Page:**
 
-**Step 19:** Add Year field slicer. Hide Slicer headers. Change Slicer Style to Between. Change Value font to Segoe UI Bold Size 10. Add visual level filter to exclude blanks.
+`Step 19:` Add Year field slicer. Hide Slicer headers. Change Slicer Style to Between. Change Value font to Segoe UI Bold Size 10. Add visual level filter to exclude blanks.
 
-**Step 20:** For year 2020, we have multiple customers with the same highest revenue. To display this what Power BI does is it aggregates the sum of all values which is not the correct approach. To fix this we’ll use the HASONEVALUE operator to create new measures to be used instead. Swap in these new measures for the 3 Top Customer card visuals.
+`Step 20:` For year 2020, we have multiple customers with the same highest revenue. To display this what Power BI does is it aggregates the sum of all values which is not the correct approach. To fix this we’ll use the HASONEVALUE operator to create new measures to be used instead. Swap in these new measures for the 3 Top Customer card visuals.
 
 New DAX Measures:
 1. Total Orders (Customer Detail) = IF(HASONEVALUE('AW Customer Lookup'[CustomerKey]), [Total Orders], "-")\
@@ -388,9 +388,9 @@ New DAX Measures:
 
 **In Product Detail Page:**
 
-**Step 21:** Add Gauge chart visual on Total Order measure value. Add Top 1 visual level filter based on Latest Start of Month value. Set the Max value as the Order Target measure. Set Title as Monthly Orders Vs Target. Set Fill colour as 20% Black. Replicate the above Gauge chart for Total Revenue and Total Profit measures. Set the visual title accordingly.
+`Step 21:` Add Gauge chart visual on Total Order measure value. Add Top 1 visual level filter based on Latest Start of Month value. Set the Max value as the Order Target measure. Set Title as Monthly Orders Vs Target. Set Fill colour as 20% Black. Replicate the above Gauge chart for Total Revenue and Total Profit measures. Set the visual title accordingly.
 
-**Step 22:** Add Conditional formatting for the above 3 Gauge Charts by creating new measures to base the formatting on.
+`Step 22:` Add Conditional formatting for the above 3 Gauge Charts by creating new measures to base the formatting on.
 
 DAX: Order Target Gap = [Total Orders] - [Order Target]
 DAX: Revenue Target Gap = [Total Revenue] - [Revenue Target]
@@ -402,41 +402,41 @@ Set Callout value and Gauge colour Conditional formatting Format Style as Rules.
 
 Apply same formatting for other Gauges based on Revenue Target Gap and Profit Target Gap measures.
 
-**Step 23:** Add Area Chart with Total Profit on Y Axis and Start of Month on X Axis. Set Title as Monthly Profit. Change Line colour to 20% Black and Shade Area with 80% transparency. Add another Area Chart with Total Returns on Y Axis and Start of Month on X Axis. Set Title as Monthly Returns. Change Line colour to Red and Shade Area with 80% transparency.
+`Step 23:` Add Area Chart with Total Profit on Y Axis and Start of Month on X Axis. Set Title as Monthly Profit. Change Line colour to 20% Black and Shade Area with 80% transparency. Add another Area Chart with Total Returns on Y Axis and Start of Month on X Axis. Set Title as Monthly Returns. Change Line colour to Red and Shade Area with 80% transparency.
 
-**Step 24:** Add Date Hierarchy to the Monthly Profit and Monthly Returns Area charts. Rename Titles to Profit Trending and Return Trending respectively.
+`Step 24:` Add Date Hierarchy to the Monthly Profit and Monthly Returns Area charts. Rename Titles to Profit Trending and Return Trending respectively.
 
 **In Exec Dashboard Page:**
 
-**Step 25:** Create visual drill down hierarchy for X Axis of Monthly Revenue line chart as Year -> Start of Quarter -> Start of Month. This helps us create a sort of visual level hierarchy for top level executives. Change Title to Revenue Trending.
+`Step 25:` Create visual drill down hierarchy for X Axis of Monthly Revenue line chart as Year -> Start of Quarter -> Start of Month. This helps us create a sort of visual level hierarchy for top level executives. Change Title to Revenue Trending.
 
 **In Customer Detail Page:**
 
-**Step 26:** Add Date Hierarchy to the Monthly Customers line chart. Rename Title to Customer Trending.
+`Step 26:` Add Date Hierarchy to the Monthly Customers line chart. Rename Title to Customer Trending.
 
 **In Product Detail Page:**
 
-**Step 27:** Configure Product Drill through functionality: In the Product Detail Page change the Page Type to Drill through and Drill through from Product Name field. Delete Back Button if automatically created, this would be configured later. Remove Product Name slicer added earlier. In Exec Dashboard Product table, right click on any product and in drill through option select Product Detail Page. Add a Simple card on the page to display Product Name being drilled through. Add Text Box above this card with Selected Product text.
+`Step 27:` Configure Product Drill through functionality: In the Product Detail Page change the Page Type to Drill through and Drill through from Product Name field. Delete Back Button if automatically created, this would be configured later. Remove Product Name slicer added earlier. In Exec Dashboard Product table, right click on any product and in drill through option select Product Detail Page. Add a Simple card on the page to display Product Name being drilled through. Add Text Box above this card with Selected Product text.
 
-**Step 28:** Setup Report Interactions:
+`Step 28: Setup Report Interactions:`
 
 *In Exec Dashboard Page:* 1. Set the Orders by Category bar graph to Filter interaction based on Revenue Trending line chart filter since its more intuitive. 2. Set the 3 Monthly KPIs to None interaction based on Revenue Trending line chart filter since they represent current month metrics and hence shouldn’t change. 3. Set the Most Ordered/Returned Product Type Card to None interaction based on product selected filter in the Top 10 Products Matrix since then they will not show overall type but the type of the selected product which is not correct behaviour. 4. Set the Orders by category Bar chart to None interaction based on product selected filter in the Top 10 Products Matrix.
 
 *In Customer Detail Page:* 1. Set the Orders by Income/Occupation Donuts to Filter interaction based on Customer Trending line chart filter. 2. Set the Customer Trending and Orders by Income/Occupation Donuts to None interaction based on Top 100 Customer Table filter. Set Year slicer to Filter interaction to all visuals.
 
-**Step 29:** Adding Bookmarks:
+`Step 29: Adding Bookmarks:`
 In Exec Dashboard Page: Clear all applied filters. Navigate to the Bookmark pane and select Add Bookmark. Rename to Clear Exec Filters. Now we need something like a button to trigger the bookmark. Add a Reset Button. In Button formatting panel enable Actions. Set Action type to Bookmark and select our bookmark. Add tooltip if required. Add button formatting so the icon line colour is White in default state and Maven Blue in hover and pressed states.
 
-**Step 30:** Setting up Custom Navigation Buttons:
+`Step 30: Setting up Custom Navigation Buttons:`
 Copy the left Nav Bar to a new page where we’ll build the navigation setup. This needs to be done since we’ll be configuring Nav button actions to navigate to each of the pages and if we build this bar on anyone of those pages we won’t have the option to configure the button to navigate to same page it was built on. So building it on a new page gives us the option to configure navigation to all the other pages and then we can copy the bar to all the pages.
 Insert a Blank Button, in button formatting change state to Default and set Icon Type as Custom and Browse to select custom icon. Setup similarly custom icons for hover and click state. Enable Button Action as Type: Page Navigation and set the Destination as Required Page. Group all icons in the selection pane as Navigation Buttons.
 
-**Step 31:** Adding Custom Slicer Panel:
+`Step 31: Adding Custom Slicer Panel:`
 Add Filter button in the left Nav bar and configure style with all states and Filter custom icons as required. Add a rectangle shape preferable the height of the page to configure the slicer. Format the shape as required with 20% Black background. Add the Year and Continent slicers inside the shape. Format the slicers as required.
 We need another button to go back to the hidden state. Add Left Arrow/Back button and format as required. Group all of these slicers, back button and background shape as Slicer Panel.
 Now we need to create 2 bookmarks: 1. Hide Slicer Panel 2. Show Slicer Panel. For 2, make the bookmark as it is. For 1, from the selection pane hide the Slicer Panel group and then create the bookmark. Uncheck Data option from both bookmark settings to ensure show/hide bookmark does not affect the existing applied filters. Configure both Filter & Back button action type as Bookmarks and select corresponding Show/Hide Panel Bookmarks.
 
-**Step 32:** Configuring Parameters:
+`Step 32: Configuring Parameters:`
 
 **In Product Detail Page:**
 
@@ -461,14 +461,14 @@ Parameter Table: Product Metric Selection = {
 }
 Change Return trending chart Y axis to the Product Metric Selection parameter. Remove the Return Trending Title. Format the Return and Return Rate metric line colour to Red while the rest as 20% Black to indicate high value is not favourable.
 
-**Step 33:** Create new Category Tooltip page:
+`Step 33: Create new Category Tooltip page:`
 Set the page type as Tooltip. Set custom tooltip size to 225px height and 425px width. Set background to 20% Black with no transparency.
 1. Add a multi row card. Add fields as Total Revenue, Total Profit, Total Orders, Total Returns & Return Rate measures. Set the formatting as required with white font and no background.
 2. Add an area chart to display order trending by category. Set Start of week as X axis and Total Orders measure as Y axis. Remove background and set the Title as Weekly Orders and line colour as Maven blue.
 To connect this to our visual in the Exec Dashboard, select the visual and in the visual properties -> Tooltip settings select the Type as Report Page and the page as Category Tooltip.
 Hide the tooltip page from the report to prevent accidental modifications by end users.
 
-**Step 34:** Implement User Roles:
+`Step 34: Implement User Roles:`
 Although Roles (Row level security rules) are being added here in PBI Desktop, they will be applied in PBI Service.
 In the Modelling tab click on Manage Roles and Create Roles:
 1. Europe: Territory Lookup Table -> Rule: Continent equals Europe
