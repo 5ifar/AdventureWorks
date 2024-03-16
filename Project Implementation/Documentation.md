@@ -461,4 +461,17 @@ Parameter Table: Product Metric Selection = {
 }
 Change Return trending chart Y axis to the Product Metric Selection parameter. Remove the Return Trending Title. Format the Return and Return Rate metric line colour to Red while the rest as 20% Black to indicate high value is not favourable.
 
+**Step 33:** Create new Category Tooltip page:
+Set the page type as Tooltip. Set custom tooltip size to 225px height and 425px width. Set background to 20% Black with no transparency.
+1. Add a multi row card. Add fields as Total Revenue, Total Profit, Total Orders, Total Returns & Return Rate measures. Set the formatting as required with white font and no background.
+2. Add an area chart to display order trending by category. Set Start of week as X axis and Total Orders measure as Y axis. Remove background and set the Title as Weekly Orders and line colour as Maven blue.
+To connect this to our visual in the Exec Dashboard, select the visual and in the visual properties -> Tooltip settings select the Type as Report Page and the page as Category Tooltip.
+Hide the tooltip page from the report to prevent accidental modifications by end users.
+
+**Step 34:** Implement User Roles:
+Although Roles (Row level security rules) are being added here in PBI Desktop, they will be applied in PBI Service.
+In the Modelling tab click on Manage Roles and Create Roles:
+1. Europe: Territory Lookup Table -> Rule: Continent equals Europe
+2. North America: Territory Lookup Table -> Rule: Continent equals North America
+3. Pacific: Territory Lookup Table -> Rule: Continent equals Pacific
 
